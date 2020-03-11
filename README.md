@@ -1,4 +1,5 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A Book Tracking App built with React, React Router v6.
+
 
 ## Available Scripts
 

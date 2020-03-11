@@ -9,7 +9,7 @@ function NavBar(){
 
     return(
         <div className={styles['container']}>
-            <NavLink to="/" className={styles['option']} activeClassName={styles['active']}>
+            <NavLink to="/home" className={styles['option']} activeClassName={styles['active']}>
                 <BookIcon />
             </NavLink>
             <NavLink to="/profile" className={styles['option']} activeClassName={styles['active']}>
