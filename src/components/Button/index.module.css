@@ -1,0 +1,63 @@
+/* Base Button Style */
+.btn{
+    border: none;
+    border-radius: 7px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn:hover{
+    box-shadow: 0px 0px 7px 4px #20202052;
+    cursor: pointer;
+}
+
+/* Primary Button Styles */
+.primary{
+  border:solid #ffffff 1px ;
+  color:white;
+  background:#42b6a6;
+}
+
+.primary:hover{
+  border: solid 1px #42b6a6; 
+  color: #ffffff;
+  box-shadow: 0px 0px 7px 4px #20202052;
+  background:#42b6a6;
+  cursor: pointer;
+}
+ 
+/* Secondary Button */
+.secondary{
+  border:solid #42b6a6 1px ;
+  color:#42b6a6;
+  background:#ffffff;
+  border-radius: 5px;
+  padding: 10px;
+
+}
+
+.secondary:hover{
+  border: solid 1px #42b6a6; 
+  color: #ffffff;
+  box-shadow: 0px 0px 7px 4px #20202052;
+  background:rgb(0, 32, 73);
+  cursor: pointer;
+
+
+}
+
+/* Transparent Button Styles */
+.transparent{
+    border:solid #ffffff 1px ;
+    color:white;
+    background:none;
+    border-radius: 5px
+  }
+  
+.transparent:hover{
+    border: solid 1px #42b6a6; 
+    color: #245592;
+    background: white;
+  }
