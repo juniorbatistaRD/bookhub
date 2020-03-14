@@ -1,5 +1,10 @@
 .container{
-    height: 100vh;
+    height: calc(100vh - 60px);
     background-color: #f1f1f1;
     width: 100%;
+    overflow: auto;
+}
+
+.content{
+    height: 100%;
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './index.module.css'
 
-function Title ({text,fontSize, typeStyle, className}){
+function Title ({text,fontSize, typeStyle, className, padding}){
 
     const classNames = [styles[typeStyle],  className].join(' ') 
 
@@ -9,7 +9,8 @@ function Title ({text,fontSize, typeStyle, className}){
         <p 
             className={classNames}
             style={{
-                fontSize
+                fontSize,
+                padding
             }}
         >
             {text}

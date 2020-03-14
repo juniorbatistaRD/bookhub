@@ -9,13 +9,13 @@ function NavBar(){
 
     return(
         <div className={styles['container']}>
-            <NavLink to="/home" className={styles['option']} activeClassName={styles['active']}>
+            <NavLink to="/app/home" className={styles['option']} activeClassName={styles['active']}>
                 <BookIcon />
             </NavLink>
-            <NavLink to="/profile" className={styles['option']} activeClassName={styles['active']}>
+            <NavLink to="/app/profile" className={styles['option']} activeClassName={styles['active']}>
                 <ProfileIcon />
             </NavLink>
-            <NavLink to="/search" className={styles['option']} activeClassName={styles['active']}>
+            <NavLink to="/app/search" className={styles['option']} activeClassName={styles['active']}>
                 <SearchIcon/>
             </NavLink>
         </div>

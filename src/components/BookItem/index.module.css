@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+    background-color: #fff;
+    border-bottom: solid 1px #c5c5c5;
+    margin-bottom: 12px;
+}
+
+
+.cover{
+    width:75px;
+}
+
+
+.info{
+    padding: 10px;
+}

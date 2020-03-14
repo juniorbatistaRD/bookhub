@@ -3,6 +3,9 @@ import styles from './index.module.css'
 
 function SignUpPage(){
 
+
+  
+
     return(
         <div className={styles['container']}>
            SignUp
