@@ -8,6 +8,7 @@ import getBooks from "../../utils/fetchBookByUser";
 import BookByUser from "../../components/BookByUser";
 import loadingIcon from "../../assets/images/loading.gif";
 import { ReactComponent as NoBooksIcon } from "../../assets/icons/nobooks.svg";
+import { motion } from "framer-motion";
 
 function HomePage() {
   const { currentUser } = useContext(AuthContext);
@@ -25,10 +26,12 @@ function HomePage() {
     fetchBooks().then(() => setIsLoading(false));
   }, [currentUser.uid]);
 
-  console.log(books, "books");
-
   return (
-    <div className={styles["container"]}>
+    <motion.div
+      className={styles["container"]}
+      initial={{ x: -100 }}
+      animate={{ x: 0 }}
+    >
       <header className={styles["header"]}>
         <Title text="My Books" className={styles.title}></Title>
         <Button
@@ -69,7 +72,7 @@ function HomePage() {
           alt="loading"
         />
       )}
-    </div>
+    </motion.div>
   );
 }
 

@@ -10,6 +10,7 @@ import TextArea from "../../components/TextArea";
 import Button from "../../components/Button";
 import { AuthContext } from "../../contexts/AuthContext";
 import saveBook from "../../utils/saveBook";
+import { motion } from "framer-motion";
 
 function AddBookPage() {
   const { id } = useParams();
@@ -46,7 +47,7 @@ function AddBookPage() {
   };
 
   return (
-    <div>
+    <motion.div initial={{ y: -100 }} animate={{ y: 0 }}>
       <Title text="Add Book" />
       {book && (
         <>
@@ -89,7 +90,7 @@ function AddBookPage() {
 
         <Button type="submit">Save Book</Button>
       </form>
-    </div>
+    </motion.div>
   );
 }
 

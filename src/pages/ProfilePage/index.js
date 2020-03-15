@@ -5,6 +5,7 @@ import app from "../../initFireBase";
 import { AuthContext } from "../../contexts/AuthContext";
 import Avatar from "../../components/Avatar";
 import Button from "../../components/Button";
+import { motion } from "framer-motion";
 
 function ProfilePage() {
   const [quote, setQuote] = useState();
@@ -27,7 +28,11 @@ function ProfilePage() {
   }, []);
 
   return (
-    <div className={styles["container"]}>
+    <motion.div
+      className={styles["container"]}
+      initial={{ x: -100 }}
+      animate={{ x: 0 }}
+    >
       <Title text="Profile"></Title>
       <div className={styles["content"]}>
         <Avatar image={currentUser.photoURL} width="100px" />
@@ -44,7 +49,7 @@ function ProfilePage() {
           {quote && <span>{quote.quote}</span>}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

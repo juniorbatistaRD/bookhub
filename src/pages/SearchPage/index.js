@@ -6,6 +6,7 @@ import Button from "../../components/Button";
 import { ReactComponent as FlyingIcon } from "../../assets/icons/flying.svg";
 import searchBooks from "../../utils/searchBooks";
 import BookList from "./BookList";
+import { motion } from "framer-motion";
 
 function SearchPage() {
   const [query, setQuery] = useState(" ");
@@ -27,10 +28,12 @@ function SearchPage() {
     }
   }, [page, query]);
 
-  console.log(books, "books");
-
   return (
-    <div className={styles["container"]}>
+    <motion.div
+      className={styles["container"]}
+      initial={{ x: -100 }}
+      animate={{ x: 0 }}
+    >
       <Title text="Search" />
       <div className={styles["header"]}>
         <InputField
@@ -72,7 +75,7 @@ function SearchPage() {
           </Button>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }
 
