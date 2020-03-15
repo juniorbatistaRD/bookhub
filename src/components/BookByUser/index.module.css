@@ -15,12 +15,17 @@
   padding: 10px;
 }
 
-.delete-button {
-  margin: 10px;
-  margin-left: auto;
+.buttons {
+  display: flex;
+  justify-content: center;
 }
 
-.delete-button img {
+.buttons button {
+  margin: 5px;
+  padding: 7px;
+}
+
+.buttons img {
   width: 17px;
   height: 17px;
 }

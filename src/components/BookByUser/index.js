@@ -1,12 +1,15 @@
 import React from "react";
 import styles from "./index.module.css";
+import { useNavigate } from "react-router-dom";
 import coverIcon from "../../assets/icons/cover.svg";
 import Title from "../Title";
 import swal from "@sweetalert/with-react";
 import TrashIcon from "../../assets/icons/trash.svg";
 import { db } from "../../initFireBase";
+import Button from "../Button";
 
-function BookByUser({ bookInfo, book_id }) {
+function BookByUser({ bookInfo }) {
+  const navigate = useNavigate();
   const showBookDeatails = () => {
     swal({
       content: (
@@ -17,8 +20,21 @@ function BookByUser({ bookInfo, book_id }) {
             alt="COver"
           />
           <Title text={bookInfo.title} fontSize="16px"></Title>
-          <div className={styles["delete-button"]} onClick={() => deleteBook()}>
-            <img src={TrashIcon} alt="Trash" />
+          <div className={styles["buttons"]}>
+            <Button
+              typeStyle="secondary"
+              onClick={() => {
+                swal.close();
+                navigate(`/app/edit/${bookInfo.id}`);
+              }}
+            >
+              Edit
+            </Button>
+
+            <Button typeStyle="secondary">
+              <span>Delete</span>
+              <img src={TrashIcon} alt="Trash" onClick={() => deleteBook()} />
+            </Button>
           </div>
           {bookInfo.author && (
             <Title

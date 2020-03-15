@@ -8,10 +8,9 @@ import LandPage from "./pages/LandPage";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
 import SearchPage from "./pages/SearchPage";
-import LoginPage from "./pages/SignUpPage";
-import SignUpPage from "./pages/LoginPage";
 import AddBookPage from "./pages/AddBookPage";
 import AddOptionsPage from "./pages/AddOptionsPage";
+import EditPage from "./pages/EditPage";
 
 function App() {
   return (
@@ -19,8 +18,6 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<LandPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignUpPage />} />
           <ProtectedRoute path="/app" element={<MainLayout />}>
             <Route path="home" element={<HomePage />} />
             <Route path="profile" element={<ProfilePage />} />
@@ -28,6 +25,7 @@ function App() {
             <Route path="add" element={<AddOptionsPage />} />
             <Route path="addBook/" element={<AddBookPage />} />
             <Route path="addBook/:id" element={<AddBookPage />} />
+            <Route path="edit/:id" element={<EditPage />} />
           </ProtectedRoute>
         </Routes>
       </Router>
