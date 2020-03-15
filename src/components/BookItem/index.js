@@ -1,25 +1,44 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import styles from './index.module.css'
-import Title from '../Title'
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import coverIcon from "../../assets/icons/cover.svg";
+import styles from "./index.module.css";
+import Title from "../Title";
+import Button from "../Button";
+function BookItem({ bookInfo }) {
+  const navigate = useNavigate();
 
-function BookItem({bookInfo}){
+  return (
+    <div className={styles.container}>
+      <img
+        className={styles.cover}
+        src={
+          bookInfo.volumeInfo.imageLinks
+            ? bookInfo.volumeInfo.imageLinks.thumbnail
+            : coverIcon
+        }
+        alt="COver"
+      />
+      <div className={styles.info}>
+        <Title text={bookInfo.volumeInfo.title} fontSize="18px" padding="0px" />
+        {bookInfo.volumeInfo.authors && (
+          <Title
+            text={bookInfo.volumeInfo.authors[0]}
+            fontSize="14px"
+            typeStyle="secondary"
+          />
+        )}
 
-    return(
-        <div className={styles.container}>
-            <img className={styles.cover} src={bookInfo.image} alt="COver"/>
-            <div className={styles.info}>
-                <Title text={bookInfo.title} fontSize="18px" padding="0px"/>
-                <Title text={bookInfo.author} fontSize="14px" typeStyle="secondary"/>
-                <span>{bookInfo.year}</span>
-                <Link to={`/app/addbook/${bookInfo.id}`}>
-                    <p>Add Book</p>
-                </Link>
-            </div>
-
-        </div>
-    )
+        <span>{bookInfo.date}</span>
+        <Button
+          onClick={() => navigate(`/app/addbook/${bookInfo.id}`)}
+          padding="7px"
+          margin="7px 0px 0px 0px"
+        >
+          Add Book
+        </Button>
+      </div>
+    </div>
+  );
 }
 
-
-export default BookItem
+export default BookItem;

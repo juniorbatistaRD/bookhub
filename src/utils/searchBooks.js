@@ -1,28 +1,23 @@
-const apiKey = process.env.REACT_APP_GOODREADS_KEY;
+const apiKey = process.env.REACT_APP_BOOKS_KEY;
 
 const searchBooks = async (query, page) => {
-  const response = await fetch(
-    `https://www.goodreads.com/search/index.xml?q=${query}&key=${apiKey}&page=${page}`
-  );
-  const data = await response.text();
-  const parser = new DOMParser();
-  const xml = parser.parseFromString(data, "text/xml");
-  const booksData = xml.getElementsByTagName("work");
+  const results = await fetch(
+    `https://www.googleapis.com/books/v1/volumes?q=${query}&startIndex=${page}&maxResults=20&printType=books&key=${apiKey}`
+  )
+    .then(e => e.json())
+    .then(data => {
+      let books = [];
+      console.log(data.items);
+      if (data.items.length > 0) {
+        data.items.forEach(book => {
+          books.push(book);
+        });
+      }
 
-  const bookDataINeed = [];
-
-  for (let item of booksData) {
-    bookDataINeed.push({
-      id: item.childNodes[17].childNodes[1].innerHTML,
-      year: item.childNodes[9].innerHTML,
-      rating: item.childNodes[15].innerHTML,
-      title: item.childNodes[17].childNodes[3].innerHTML,
-      author: item.childNodes[17].childNodes[5].childNodes[3].innerHTML,
-      image: item.childNodes[17].childNodes[7].innerHTML
+      return books;
     });
-  }
 
-  return bookDataINeed;
+  return results;
 };
 
 export default searchBooks;

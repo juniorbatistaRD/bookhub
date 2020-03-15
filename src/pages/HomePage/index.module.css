@@ -1,11 +1,41 @@
-
-.header{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.add-book-button{
-    margin-left: auto;
-    margin-right: 20px;
+.add-book-button {
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-list {
+  margin-top: 30px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.no-books-found svg {
+  width: 250px;
+  height: 250px;
+}
+
+.no-books-found {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading {
+  width: 50px;
+  margin: auto;
 }

@@ -1,16 +1,10 @@
-import React from 'react'
-import styles from './index.module.css'
+import React from "react";
+import styles from "./index.module.css";
+import searchBooks from "../../utils/searchBooks";
 
-function LoginPage(){
-
-    return(
-        <div className={styles['container']}>
-           Login
-        </div>
-    )
-
-
+function LoginPage() {
+  console.log(searchBooks("love does", 1));
+  return <div className={styles["container"]}>hi</div>;
 }
 
-
-export default LoginPage
+export default LoginPage;

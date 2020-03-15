@@ -1,26 +1,26 @@
-.container{
-    position: fixed;
-    bottom: 0;
-    height: 60px;
-    width: 100%;
-    background-color:white;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    box-shadow: 0 -2px 3px 1px #80808059;
+.container {
+  position: fixed;
+  bottom: 0;
+  height: 60px;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 -2px 3px 1px #80808059;
 }
 
-.option{
-    display: flex;
-    flex:1;
-    justify-content: center;
-    height: 100%;
+.option {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  height: 100%;
 }
 
-.option svg{
-    width:25px;
+.option svg {
+  width: 25px;
 }
 
-.active{
-    background-color: #42b6a6;
+.active {
+  background-color: #42b6a6;
 }

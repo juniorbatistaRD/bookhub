@@ -8,15 +8,16 @@ import PreviewBook from "../../components/PreviewBook";
 import Title from "../../components/Title";
 import TextArea from "../../components/TextArea";
 import Button from "../../components/Button";
-import { db } from "../../initFireBase";
 import { AuthContext } from "../../contexts/AuthContext";
-import swal from "@sweetalert/with-react";
+import saveBook from "../../utils/saveBook";
 
 function AddBookPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
   const [book, setBook] = useState(null);
+  const [title, setTitle] = useState(null);
+  const [author, setAuthor] = useState(null);
   const [date, setDate] = useState(null);
   const [description, setDescription] = useState(null);
 
@@ -26,38 +27,22 @@ function AddBookPage() {
       setBook(data);
     };
 
-    getData();
+    if (id) {
+      getData();
+    }
   }, [id]);
 
-  const saveBook = e => {
-    e.preventDefault();
+  const save = e => {
+    // e.preventDefault();
 
-    //quick validate
-
-    if (!book.id || !currentUser.uid) {
-      alert("Data is invalid, Contact Developer");
-    }
-
-    db.collection("books")
-      .add({
-        goodreads_id: book.id,
-        date,
-        description,
-        user: currentUser.uid
-      })
-      .then(() => {
-        swal({
-          text: "Yay, your book was added",
-          icon: "success"
-        });
-        navigate("/app/home");
-      })
-      .catch(err => {
-        swal({
-          text: "Oh no! We couldn't add you book" + err,
-          icon: "error"
-        });
-      });
+    saveBook({
+      book,
+      title,
+      author,
+      date,
+      description,
+      user: currentUser.uid
+    }).then(() => navigate("/app/home"));
   };
 
   return (
@@ -69,13 +54,28 @@ function AddBookPage() {
           <PreviewBook bookInfo={book} />
         </>
       )}
-      <form className={styles["form"]}>
+      <form className={styles["form"]} onSubmit={e => save(e)}>
+        {!id && (
+          <>
+            <Title typeStyle="secondary" fontSize="16px" text="Title" />
+            <InputField
+              type="text"
+              onChange={e => setTitle(e.target.value)}
+              required
+            />
+
+            <Title typeStyle="secondary" fontSize="16px" text="Author" />
+            <InputField type="text" onChange={e => setAuthor(e.target.value)} />
+          </>
+        )}
+
         <Title
           typeStyle="secondary"
           fontSize="16px"
           text="Highlights / Thoughts / Description"
         />
         <TextArea rows="20" onChange={e => setDescription(e.target.value)} />
+
         <Title
           typeStyle="secondary"
           fontSize="16px"
@@ -86,7 +86,8 @@ function AddBookPage() {
           type="date"
           onChange={e => setDate(e.target.value)}
         />
-        <Button onClick={e => saveBook(e)}>Save Book</Button>
+
+        <Button type="submit">Save Book</Button>
       </form>
     </div>
   );
