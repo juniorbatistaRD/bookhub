@@ -20,13 +20,11 @@ function AddOptionsPage() {
       <Title text="Add books to your list" />
       <div className={styles["button-container"]}>
         <Button onClick={() => navigate("/app/search")}>
-          Search Book <SearchIcon />
+          Search Book <SearchIcon className={styles["icon"]} />
         </Button>
-        <Button>
-          Scan Barcode on Book <ScanIcon />
-        </Button>
+
         <Button onClick={() => navigate("/app/addbook/")}>
-          Add Custom Book <EditIcon />
+          Add Custom Book <EditIcon className={styles["icon"]} />
         </Button>
       </div>
     </motion.div>

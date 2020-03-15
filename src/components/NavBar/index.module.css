@@ -24,3 +24,11 @@
 .active {
   background-color: #42b6a6;
 }
+
+.icon {
+  fill: #42b6a6;
+}
+
+.active-icon {
+  fill: white;
+}
