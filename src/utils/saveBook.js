@@ -18,7 +18,7 @@ const saveBook = async data => {
         : data.author,
       image: data.book
         ? data.book.volumeInfo.imageLinks
-          ? data.book.volumeInfo.imageLinks.thumbnail
+          ? data.book.volumeInfo.imageLinks.thumbnail.replace("http", "https")
           : null
         : null,
       book_id: data.book ? data.book.id : null,

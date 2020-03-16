@@ -13,7 +13,7 @@ function BookItem({ bookInfo }) {
         className={styles.cover}
         src={
           bookInfo.volumeInfo.imageLinks
-            ? bookInfo.volumeInfo.imageLinks.thumbnail
+            ? bookInfo.volumeInfo.imageLinks.thumbnail.replace("http", "https")
             : coverIcon
         }
         alt="COver"

@@ -34,7 +34,7 @@ function AddBookPage() {
   }, [id]);
 
   const save = e => {
-    // e.preventDefault();
+    e.preventDefault();
 
     saveBook({
       book,

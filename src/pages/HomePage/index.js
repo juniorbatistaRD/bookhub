@@ -45,7 +45,6 @@ function HomePage() {
         <div className={styles["book-list"]}>
           {books.length > 0
             ? books.map((book, index) => {
-                console.log(book.id);
                 return (
                   <BookByUser
                     key={index}

@@ -4,15 +4,13 @@ import styles from "./index.module.css";
 import Title from "../Title";
 
 function PreviewBook({ bookInfo }) {
-  console.log(bookInfo);
-
   return (
     <div className={styles.container}>
       <img
         className={styles.cover}
         src={
           bookInfo.volumeInfo.imageLinks
-            ? bookInfo.volumeInfo.imageLinks.thumbnail
+            ? bookInfo.volumeInfo.imageLinks.thumbnail.replace("http", "https")
             : coverIcon
         }
         alt="COver"
