@@ -18,8 +18,6 @@ function EditPage() {
   const [date, setDate] = useState();
   const [description, setDescription] = useState();
 
-  console.log([title, author, date, description]);
-
   const save = e => {
     e.preventDefault();
     const booksRef = db.collection("books").doc(id);

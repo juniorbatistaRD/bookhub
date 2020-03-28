@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import Title from "../../components/Title";
 import Button from "../../components/Button";
 import { ReactComponent as SearchIcon } from "../../assets/icons/search.svg";
-import { ReactComponent as ScanIcon } from "../../assets/icons/scan.svg";
 import { ReactComponent as EditIcon } from "../../assets/icons/document.svg";
 import { motion } from "framer-motion";
 

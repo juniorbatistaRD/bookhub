@@ -1,30 +1,17 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import styles from "./index.module.css";
 import { useNavigate } from "react-router-dom";
 import Title from "../../components/Title";
 import Button from "../../components/Button";
-import { AuthContext } from "../../contexts/AuthContext";
-import getBooks from "../../utils/fetchBookByUser";
+import { BookContext } from "../../contexts/BookContext";
 import BookByUser from "../../components/BookByUser";
 import loadingIcon from "../../assets/images/loading.gif";
 import { ReactComponent as NoBooksIcon } from "../../assets/icons/nobooks.svg";
 import { motion } from "framer-motion";
 
 function HomePage() {
-  const { currentUser } = useContext(AuthContext);
-  const [books, setBooks] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchBooks = async () => {
-      setIsLoading(true);
-      const books = await getBooks(currentUser.uid);
-      setBooks(books);
-    };
-
-    fetchBooks().then(() => setIsLoading(false));
-  }, [currentUser.uid]);
+  const { books, isLoading } = useContext(BookContext);
 
   return (
     <motion.div
