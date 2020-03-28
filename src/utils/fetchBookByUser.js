@@ -11,18 +11,6 @@ const getBooks = async user => {
     books.push({ id: doc.id, ...doc.data() });
   });
 
-  //   .then(function (querySnapshot) {
-  //     const
-  //   querySnapshot.forEach(function(doc) {
-  //     // doc.data() is never undefined for query doc snapshots
-  //     books.push(doc.data());
-  //     // console.log(doc.id, " => ", doc.data());
-  //   });
-  // })
-  // .catch(function(error) {
-  //   console.log("Error getting documents: ", error);
-  // });
-
   return books;
 };
 

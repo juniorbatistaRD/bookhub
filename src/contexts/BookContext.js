@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback
+} from "react";
 import { AuthContext } from "./AuthContext";
 import getBooks from "../utils/fetchBookByUser";
 
@@ -9,18 +15,19 @@ export const BookProvider = ({ children }) => {
   const [books, setBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchBooks = async () => {
-      setIsLoading(true);
-      const books = await getBooks(currentUser.uid);
-      setBooks(books);
-    };
-
-    fetchBooks().then(() => setIsLoading(false));
+  const fetchBooks = useCallback(async () => {
+    setIsLoading(true);
+    const booksData = await getBooks(currentUser.uid);
+    setBooks(booksData);
+    setIsLoading(false);
   }, [currentUser.uid]);
 
+  useEffect(() => {
+    fetchBooks();
+  }, [currentUser.uid, fetchBooks]);
+
   return (
-    <BookContext.Provider value={{ books, isLoading }}>
+    <BookContext.Provider value={{ books, isLoading, fetchBooks }}>
       {children}
     </BookContext.Provider>
   );

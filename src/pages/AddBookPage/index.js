@@ -9,6 +9,7 @@ import Title from "../../components/Title";
 import TextArea from "../../components/TextArea";
 import Button from "../../components/Button";
 import { AuthContext } from "../../contexts/AuthContext";
+import { BookContext } from "../../contexts/BookContext";
 import saveBook from "../../utils/saveBook";
 import { motion } from "framer-motion";
 
@@ -16,6 +17,7 @@ function AddBookPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
+  const { fetchBooks } = useContext(BookContext);
   const [book, setBook] = useState(null);
   const [title, setTitle] = useState(null);
   const [author, setAuthor] = useState(null);
@@ -43,7 +45,10 @@ function AddBookPage() {
       date,
       description,
       user: currentUser.uid
-    }).then(() => navigate("/app/home"));
+    }).then(() => {
+      navigate("/app/home");
+      fetchBooks();
+    });
   };
 
   return (
